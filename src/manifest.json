@@ -8,6 +8,7 @@
 
   "permissions" : [
       "https://www.protondb.com/*",
+      "https://protondb.max-p.me/*",
       "storage"
   ],
 
