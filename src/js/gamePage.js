@@ -20,19 +20,30 @@ class Steam {
         }
     }
 
+    static select_title(key_data) {
+        let titles = ["Proton Version", "GPU Driver", "OS"];
+
+        for (let t of titles) {
+            if (key_data.toLowerCase() === t.replace(/ /g, '').toLowerCase()) {
+                return t
+            }
+        }
+    }
+
     // append to the right column the data
     static insert_additional_info(div_data, appid) {
         let element = document.getElementsByClassName("rightcol game_meta_data")[0];
         let block_data = document.createElement("div");
+        block_data.className = "protondb_ratings_data";
+
+        let text_div = document.createElement("div");
+        text_div.className = "text_div";
 
         if (div_data["mostUsedprotonVersion"] === div_data["mostUsedos"] && div_data["mostUsedos"] === div_data["mostUsedgpuDriver"]) {
             //i.e all the fields are nill - redirect to the protondb page
-            let a_tag = document.createElement("a");
-            a_tag.href = "https://www.protondb.com/app/" + appid;
             let p_tag = document.createElement("p");
-            p_tag.textContent = "Couldn't find enough info. Check the ProtonDB Page";
-            block_data.append(p_tag);
-            block_data.append(a_tag);
+            p_tag.textContent = "Couldn't find enough information";
+            text_div.append(p_tag);
 
         }
         else {
@@ -42,7 +53,9 @@ class Steam {
             for (let key in div_data) {
                 let p_row = document.createElement("p");
                 let span_data = document.createElement("span");
-                span_data.textContent = key.slice(8) + ":"; // removing "mostUsed"
+                let text_key = this.select_title(key.slice(8));
+
+                span_data.textContent = text_key + ": ";
                 let b_data = document.createElement("b");
                 b_data.textContent = div_data[key];
                 p_row.append(span_data);
@@ -50,8 +63,22 @@ class Steam {
 
                 div_rows.append(p_row);
             }
-            block_data.append(div_rows);
+            text_div.append(div_rows);
         }
+
+        let image_div = document.createElement("div");
+        image_div.className = "div_image";
+
+        let a_tag = document.createElement("a");
+        a_tag.href = "https://www.protondb.com/app/" + appid;
+        let img_elem = document.createElement("img");
+        img_elem.setAttribute("src", browser.extension.getURL("assets/icon-48.png"));
+
+        a_tag.appendChild(img_elem);
+        image_div.append(a_tag);
+
+        block_data.append(text_div);
+        block_data.append(image_div);
 
         element.prepend(block_data);
 
@@ -76,7 +103,7 @@ if (document.querySelector("span.platform_img.linux") === null) {
             return response.json();
         }).then(data => {
             let div_data = Reports.get_information_from_reports(data);
-            Steam.insert_additional_info(div_data);
+            Steam.insert_additional_info(div_data, appid);
         })
 } else {
     Steam.insert_rating("native");

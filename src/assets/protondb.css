@@ -4,13 +4,11 @@
  * See the LICENSE file in this distribution.
  */
 
-.protondb_rating_row
-{
+.protondb_rating_row {
     margin-top: 13px;
 }
 
-.protondb_rating_link
-{
+.protondb_rating_link {
     color: #EEEEEE !important;
     text-transform: capitalize;
     text-shadow: 1px 0px #000;
@@ -23,33 +21,27 @@
     margin-top: -4px;
 }
 
-.protondb_rating_borked
-{
+.protondb_rating_borked {
     border-color: #FF1919;
 }
 
-.protondb_rating_bronze
-{
+.protondb_rating_bronze {
     border-color: #CD7F32;
 }
 
-.protondb_rating_silver
-{
+.protondb_rating_silver {
     border-color: #C0C0C0;
 }
 
-.protondb_rating_gold
-{
+.protondb_rating_gold {
     border-color: #FFD799;
 }
 
-.protondb_rating_platinum
-{
+.protondb_rating_platinum {
     border-color: #B4C7DC;
 }
 
-.protondb_rating_native
-{
+.protondb_rating_native {
     border-color: #008000;
 }
 
@@ -60,4 +52,31 @@
 .steam_row {
     display: flex;
     line-height: 16px;
+}
+
+.protondb_ratings_data {
+
+    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: #c6d4df;
+    font-size: 12px;
+
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.text_div {
+    float: left;
+    margin-right: 50px
+}
+
+.div_image {
+    overflow: hidden;
+}
+
+p {
+    line-height: 1.2em;
+    margin: 0.2em 0;
 }

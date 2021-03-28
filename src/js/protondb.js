@@ -1,8 +1,8 @@
 "use strict";
 
 class ProtonDB {
-    static get HOMEPAGE() {return "https://www.protondb.com/";}
-    static get API_SUMMARY() {return "api/v1/reports/summaries/";}
+    static get HOMEPAGE() { return "https://www.protondb.com/"; }
+    static get API_SUMMARY() { return "api/v1/reports/summaries/"; }
 
     static request_summary(appid, callback) {
         var request = new XMLHttpRequest();
@@ -13,10 +13,9 @@ class ProtonDB {
         request.send(null);
     }
 
-    static request_rating(appid, callback)
-    {
+    static request_rating(appid, callback) {
         chrome.runtime.sendMessage(
-            {contentScriptQuery: "queryRating", appid: appid},
+            { contentScriptQuery: "queryRating", appid: appid },
             rating => callback(rating)
         );
     }
