@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Complementary ProtonDB for Steam",
   "version": "1.0",
-  "description": "Sraps data from protondb.com reports and shows it on Steam",
+  "description": "Scraps data from protondb.com reports and shows it on Steam",
   "permissions": [
     "https://www.protondb.com/*",
     "https://protondb.max-p.me/*",
