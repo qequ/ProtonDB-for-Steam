@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "ProtonDB for Steam",
-  "version": "1.8.1",
-  "description": "Shows ratings from protondb.com on Steam",
+  "name": "Complementary ProtonDB for Steam",
+  "version": "1.0",
+  "description": "Sraps data from protondb.com reports and shows it on Steam",
   "permissions": [
     "https://www.protondb.com/*",
     "https://protondb.max-p.me/*",
@@ -19,33 +19,13 @@
       ],
       "js": [
         "js/protondb.js",
-        "js/whitelist.js",
         "js/gamePage.js"
-      ],
-      "css": [
-        "assets/protondb.css"
-      ]
-    },
-    {
-      "matches": [
-        "https://store.steampowered.com/wishlist/*"
-      ],
-      "js": [
-        "js/protondb.js",
-        "js/whitelist.js",
-        "js/wishlist.js"
       ],
       "css": [
         "assets/protondb.css"
       ]
     }
   ],
-  "background": {
-    "scripts": [
-      "js/background.js"
-    ],
-    "persistent": false
-  },
   "applications": {
     "gecko": {
       "id": "{30280527-c46c-4e03-bb16-2e3ed94fa57c}"

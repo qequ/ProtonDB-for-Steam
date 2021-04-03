@@ -6,19 +6,6 @@ class Steam {
         return parseInt(appid[2], 10);
     }
 
-    // Insert the ProtonDB rating below DEVELOPER/PUBLISHER
-    static insert_rating(rating, whitelisted = false) {
-        var element = document.querySelector(".user_reviews");
-        var subtitle = document.createElement("div");
-        subtitle.className = "subtitle column'";
-        subtitle.textContent = "ProtonDB Rating:";
-        var container = ProtonDB.get_rating_container(rating, whitelisted);
-        container.prepend(subtitle);
-
-        if (element) {
-            element.append(container);
-        }
-    }
 
     static select_title(key_data) {
         let titles = ["Proton Version", "GPU Driver", "OS"];
@@ -90,14 +77,6 @@ var appid = Steam.get_app_id(window.location.href);
 
 if (document.querySelector("span.platform_img.linux") === null) {
 
-    ProtonDB.request_rating(appid, (rating) => {
-        if (rating == "pending") {
-            Steam.insert_rating("Awaiting reports!");
-        } else {
-            Steam.insert_rating(rating, whitelist.includes(appid) ? true : false);
-        }
-    });
-
     fetch("https://protondb.max-p.me/games/" + appid + /reports/)
         .then(response => {
             return response.json();
@@ -105,6 +84,4 @@ if (document.querySelector("span.platform_img.linux") === null) {
             let div_data = Reports.get_information_from_reports(data);
             Steam.insert_additional_info(div_data, appid);
         })
-} else {
-    Steam.insert_rating("native");
 }
